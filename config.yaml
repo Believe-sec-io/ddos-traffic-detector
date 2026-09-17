@@ -1,0 +1,21 @@
+# Configuration for the DDoS Traffic Detector.
+# Tune these thresholds to your network's normal (baseline) traffic levels.
+
+detector:
+  max_total_pps: 1000          # overall packets/sec considered a volumetric flood
+  max_per_src_pps: 200         # single source IP packets/sec considered abusive
+  syn_ratio_threshold: 0.6     # fraction of bare SYNs (no ACK) considered a SYN flood
+  min_syn_count: 50            # minimum SYN count in a window before evaluating the ratio
+  unique_ip_threshold: 30      # number of distinct source IPs suggesting a distributed attack
+  udp_pps_threshold: 500       # UDP packets/sec considered a UDP flood
+  icmp_pps_threshold: 300      # ICMP packets/sec considered a ping flood
+  adaptive_k: 3.0              # k in "mean + k*stdev" adaptive anomaly threshold
+  dominant_source_ratio: 0.5   # attach a source IP to an alert when it sends this share of the window
+
+mitigator:
+  dry_run: true                 # set to false to actually create Windows Firewall block rules
+  block_duration_seconds: 300   # how long an offending IP stays blocked
+
+engine:
+  window_duration_seconds: 1.0  # size of each traffic aggregation window
+  baseline_history: 60          # number of past windows kept for the adaptive baseline
