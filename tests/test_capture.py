@@ -100,7 +100,7 @@ def test_replay_pcap_works_in_a_fresh_interpreter(tmp_path, project_root):
 
     packets = []
     for i in range(3):
-        packet = Ether() / IP(src="203.0.113.5", dst="10.0.0.1") / TCP(sport=1024 + i, dport=80, flags="S")
+        packet = Ether(dst="ff:ff:ff:ff:ff:ff") / IP(src="203.0.113.5", dst="10.0.0.1") / TCP(sport=1024 + i, dport=80, flags="S")
         packet.time = 1000.0 + i
         packets.append(packet)
 

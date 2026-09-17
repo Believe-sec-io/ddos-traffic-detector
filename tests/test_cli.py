@@ -41,7 +41,7 @@ def test_main_replay_end_to_end_detects_and_mitigates(tmp_path):
 
     packets = []
     for i in range(200):
-        packet = Ether() / IP(src="203.0.113.5", dst="10.0.0.1") / TCP(sport=1024 + i, dport=80, flags="S")
+        packet = Ether(dst="ff:ff:ff:ff:ff:ff") / IP(src="203.0.113.5", dst="10.0.0.1") / TCP(sport=1024 + i, dport=80, flags="S")
         packet.time = 1000.0 + i * 0.005
         packets.append(packet)
 

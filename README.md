@@ -1,4 +1,9 @@
-# DDoS Traffic Detector / Mitigator 🛡️
+# DDoS Traffic Detector / Mitigator
+
+[![CI](https://github.com/Believe-sec-io/ddos-traffic-detector/actions/workflows/ci.yml/badge.svg)](https://github.com/Believe-sec-io/ddos-traffic-detector/actions/workflows/ci.yml)
+![Python](https://img.shields.io/badge/python-3.11%20%7C%203.14-blue)
+![License](https://img.shields.io/badge/license-MIT-green)
+![Platform](https://img.shields.io/badge/platform-Windows%20%7C%20Linux%20%7C%20macOS-lightgrey)
 
 Un détecteur d'anomalies de trafic réseau écrit en Python, capable de repérer
 (et d'atténuer) des attaques par déni de service distribué (**DDoS**) :

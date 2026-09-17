@@ -31,7 +31,7 @@ def build_benign_traffic(start_time: float, duration: float = 1.0, pps: int = 50
     for i in range(pps):
         ts = start_time + i * (duration / pps)
         src = random.choice(BENIGN_CLIENT_IPS)
-        packet = Ether() / IP(src=src, dst=SERVER_IP) / TCP(sport=random.randint(1024, 65535), dport=443, flags="A")
+        packet = Ether(dst="ff:ff:ff:ff:ff:ff") / IP(src=src, dst=SERVER_IP) / TCP(sport=random.randint(1024, 65535), dport=443, flags="A")
         packet.time = ts
         packets.append(packet)
     return packets
@@ -42,7 +42,7 @@ def build_syn_flood(start_time: float, duration: float = 1.0, pps: int = 500, sr
     packets = []
     for i in range(pps):
         ts = start_time + i * (duration / pps)
-        packet = Ether() / IP(src=src_ip, dst=SERVER_IP) / TCP(sport=random.randint(1024, 65535), dport=80, flags="S")
+        packet = Ether(dst="ff:ff:ff:ff:ff:ff") / IP(src=src_ip, dst=SERVER_IP) / TCP(sport=random.randint(1024, 65535), dport=80, flags="S")
         packet.time = ts
         packets.append(packet)
     return packets
@@ -54,7 +54,7 @@ def build_udp_flood(start_time: float, duration: float = 1.0, pps: int = 400) ->
     for i in range(pps):
         ts = start_time + i * (duration / pps)
         src = f"198.51.100.{i % 20 + 1}"
-        packet = Ether() / IP(src=src, dst=SERVER_IP) / UDP(sport=123, dport=53)
+        packet = Ether(dst="ff:ff:ff:ff:ff:ff") / IP(src=src, dst=SERVER_IP) / UDP(sport=123, dport=53)
         packet.time = ts
         packets.append(packet)
     return packets
