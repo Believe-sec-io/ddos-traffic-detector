@@ -14,7 +14,7 @@ Un détecteur d'anomalies de trafic réseau écrit en Python, capable de repére
 Il fonctionne en **capture live** (Npcap/libpcap via scapy) ou en **replay de
 fichiers `.pcap`** (idéal pour la démo, les tests et l'analyse post-incident).
 
-## ️ Avertissement légal / éthique
+## Avertissement légal / éthique (IMPORTANT)
 
 Cet outil est destiné **uniquement** à la surveillance de réseaux que vous
 possédez ou pour lesquels vous disposez d'une autorisation écrite explicite.
